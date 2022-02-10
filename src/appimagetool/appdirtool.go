@@ -639,8 +639,9 @@ func handleNvidia() {
 	// Hence we exit whenever libGL.so.1 requires libnvidia*
 	for _, elf := range allELFs {
 		if strings.HasPrefix(filepath.Base(elf), "libnvidia") {
-			log.Println("System (most likely libGL) uses libnvidia*, please build on another system that does not use NVIDIA drivers, exiting")
-			os.Exit(1)
+			log.Println("WARNING: System (most likely libGL) uses libnvidia*, Normally appimagetool will exit now. But instead, just be aware that this app image won't work on systems that do not use the NVIDIA drivers.")
+			// log.Println("System (most likely libGL) uses libnvidia*, please build on another system that does not use NVIDIA drivers, exiting")
+			// os.Exit(1)
 		}
 	}
 }
